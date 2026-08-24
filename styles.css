@@ -1,0 +1,229 @@
+:root{
+  --paper:#F6F1E6;
+  --paper-2:#EFE6D3;
+  --ink:#2B2620;
+  --ink-soft:#6B6355;
+  --indigo-50:#E7ECF1;
+  --indigo-100:#C3D0DD;
+  --indigo-400:#4A6A8C;
+  --indigo-600:#2C4A6E;
+  --indigo-800:#1B3049;
+  --vermilion:#B23A2E;
+  --vermilion-light:#F3DFDA;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans JP',sans-serif;
+  line-height:1.8;
+}
+.wrap{max-width:840px;margin:0 auto;padding:24px 24px 80px;}
+
+/* ---- Sticky site header (cover + tabs), height follows content ---- */
+.site-header{position:sticky;top:0;left:0;right:0;background:var(--paper);border-bottom:2px solid var(--indigo-600);z-index:1000;padding:14px 0;}
+.site-header .cover{max-width:840px;margin:0 auto;padding:12px 24px 8px;border-bottom:none;margin-bottom:0;box-sizing:border-box;}
+.site-header .hanko{position:absolute;top:8px;right:24px}
+.tabs{display:flex;gap:10px;justify-content:center;margin-top:8px}
+.tabs a{display:inline-block;padding:8px 12px;border-radius:8px;color:var(--indigo-600);text-decoration:none;border:1px solid transparent;font-weight:700;background:transparent}
+.tabs a:hover{background:var(--indigo-50)}
+.tabs a.active{background:var(--indigo-600);color:#fff;border-color:var(--indigo-600)}
+
+@media (max-width:640px){
+  .site-header .cover{padding:10px 16px}
+  .tabs{flex-wrap:wrap;gap:6px}
+}
+
+/* ---- Cover ---- */
+.cover{position:relative;padding:24px 0 32px;border-bottom:2px solid var(--indigo-600);margin-bottom:40px;}
+.eyebrow{font-size:13px;letter-spacing:.2em;color:var(--indigo-600);font-weight:500;}
+.title{
+  font-family:'Shippori Mincho',serif;
+  font-weight:700;
+  font-size:30px;
+  color:var(--indigo-800);
+  margin:8px 0 6px;
+  letter-spacing:.02em;
+}
+.subtitle{font-size:15px;color:var(--ink-soft);}
+.hanko{
+  position:absolute;top:8px;right:0;
+  width:74px;height:74px;border-radius:50%;
+  border:2.5px solid var(--vermilion);
+  color:var(--vermilion);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Shippori Mincho',serif;font-weight:700;font-size:15px;
+  transform:rotate(-8deg);
+  writing-mode:vertical-rl;
+  letter-spacing:.15em;
+}
+
+/* ---- Wishlist ticket ---- */
+.ticket{
+  background:var(--paper-2);
+  border:1.5px dashed var(--indigo-400);
+  border-radius:12px;
+  padding:20px 24px;
+  margin-bottom:24px;
+}
+.ticket h2{
+  font-family:'Shippori Mincho',serif;
+  font-size:16px;font-weight:700;
+  color:var(--indigo-600);
+  margin:0 0 12px;
+}
+.ticket ul{margin:0;padding-left:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;}
+.ticket li{font-size:14px;position:relative;padding-left:0px;}
+.ticket li::before{content:"・";position:absolute;left:0;color:var(--vermilion);}
+
+.map-frame{border-radius:8px;overflow:hidden;border:1px solid var(--indigo-100);}
+.map-frame img{display:block;width:100%;height:auto;}
+.map-caption{margin:10px 0 0;font-size:12.5px;color:var(--ink-soft);text-align:center;}
+
+.ticket .map-legend{display:block;list-style:none;margin:14px 0 0;padding:0;text-align:left;}
+.map-legend li{display:flex;flex-direction:column;gap:2px;font-size:13px;padding:6px 0;border-top:1px dashed var(--indigo-100);}
+.map-legend li:first-child{border-top:none;}
+.map-legend-name{font-weight:700;color:var(--ink);}
+.map-legend-addr{color:var(--ink-soft);font-size:12.5px;}
+
+.overview{display:grid;grid-template-columns:120px 1fr;gap:10px 16px;margin:0;}
+.overview dt{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--indigo-600);display:flex;align-items:center;gap:6px;}
+.overview-icon{display:inline-flex;color:var(--indigo-600);}
+.overview-icon svg{width:15px;height:15px;}
+.overview dd{margin:0;font-size:14px;}
+.overview ol{margin:0;padding-left:0px;}
+.overview li{margin-bottom:2px;}
+
+.hotel-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;counter-reset:hotel;}
+.hotel-links li{margin:0;counter-increment:hotel;}
+.hotel-links li::before{content:none;}
+.btn-hotel{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:6px 10px;
+  background:#fff;color:var(--ink);
+  font-size:12px;font-weight:700;
+  border:1px solid var(--indigo-100);border-radius:8px;
+  text-decoration:none;
+  transition:background .15s ease,border-color .15s ease;
+}
+.btn-hotel::before{content:counter(hotel)".";color:var(--indigo-600);}
+.btn-hotel::after{content:"↗";margin-left:auto;color:var(--indigo-600);}
+.btn-hotel:hover{background:var(--indigo-50);border-color:var(--indigo-400);}
+@media (max-width:640px){
+  .overview{grid-template-columns:1fr;gap:2px 0;}
+  .overview dt{margin-top:8px;}
+  .overview dt:first-child{margin-top:0;}
+}
+
+/* ---- Photo carousel (Instagram-style swipe) ---- */
+.photo-carousel{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  max-width:470px;
+  aspect-ratio:4/3;
+  margin:16px auto 20px;
+  border-radius:14px;
+  background:var(--paper-2);
+  border:1px solid var(--indigo-100);
+}
+.photo-carousel::-webkit-scrollbar{display:none;}
+.photo-carousel-item{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;}
+.photo-carousel-item img{display:block;width:100%;height:100%;object-fit:cover;}
+
+/* ---- Day sections ---- */
+.day{margin-bottom:36px;}
+.day-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.day-badge{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--vermilion);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Shippori Mincho',serif;font-weight:700;font-size:15px;
+  flex-shrink:0;
+}
+.day-date{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:700;color:var(--indigo-800);}
+.day-weekday{font-size:13px;color:var(--ink-soft);}
+.day-card{
+  background:var(--paper-2);
+  border-radius:14px;
+  padding:28px 28px 24px;
+  border:1px solid var(--indigo-100);
+}
+.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;}
+@media (max-width:640px){.grid{grid-template-columns:1fr;}}
+
+.timeline{border-left:2px solid var(--indigo-100);padding-left:18px;}
+.tl-item{position:relative;margin-bottom:14px;font-size:14px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{
+  content:"";position:absolute;left:-23px;top:6px;
+  width:8px;height:8px;border-radius:50%;background:var(--indigo-600);
+}
+.tl-time{font-weight:500;color:var(--indigo-600);margin-right:8px;}
+
+.side-block{margin-bottom:18px;}
+.side-block:last-child{margin-bottom:0;}
+.side-label{
+  font-size:12px;font-weight:700;color:var(--indigo-600);
+  letter-spacing:.1em;margin-bottom:6px;
+  display:flex;align-items:center;gap:6px;
+}
+.side-label::before{content:"";width:14px;height:1.5px;background:var(--vermilion);display:inline-block;}
+.side-text{font-size:14px;}
+.side-text ul{margin:0;padding-left:18px;}
+.side-text li{margin-bottom:4px;}
+
+.hotel-name{font-weight:700;color:var(--ink);}
+.hotel-addr{font-size:12.5px;color:var(--ink-soft);}
+.hotel-note{
+  display:inline-block;margin-top:6px;font-size:12px;
+  background:var(--vermilion-light);color:var(--vermilion);
+  padding:3px 10px;border-radius:20px;font-weight:500;
+}
+
+.btn-reserve{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:10px;padding:9px 18px;
+  background:var(--indigo-600);color:#fff;
+  font-size:13px;font-weight:700;letter-spacing:.02em;
+  border-radius:8px;text-decoration:none;
+  transition:background .15s ease;
+}
+.btn-reserve::after{content:"→";}
+.btn-reserve:hover{background:var(--indigo-800);}
+
+.meal-row{display:flex;gap:14px;font-size:13.5px;flex-wrap:wrap;}
+.meal-row span b{color:var(--indigo-600);font-weight:500;}
+
+.memo{
+  margin-top:20px;padding-top:16px;border-top:1px dashed var(--indigo-100);
+  font-size:13px;color:var(--ink-soft);
+}
+.memo ul{margin:6px 0 0;padding-left:18px;}
+.memo li{margin-bottom:3px;}
+
+/* perforation divider */
+.perf{display:flex;align-items:center;gap:6px;margin:0 0 30px;justify-content:center;}
+.perf span{width:5px;height:5px;border-radius:50%;background:var(--indigo-100);}
+
+/* ---- Footer note ---- */
+.footer{
+  margin-top:8px;
+  background:var(--indigo-50);
+  border-radius:14px;
+  padding:22px 26px;
+}
+.footer h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:15px;color:var(--indigo-800);margin:0 0 10px;
+}
+.footer ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-soft);}
+.footer li{margin-bottom:5px;}
+
+.nav-links{display:flex;gap:12px;margin-bottom:18px;}
+.nav-links a{color:var(--indigo-600);font-weight:600;text-decoration:none}
+
+.daylink{display:block;padding:12px 14px;border-radius:10px;background:#fff;border:1px solid var(--indigo-100);margin-bottom:8px}
