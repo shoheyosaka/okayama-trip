@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>岡山 新婚旅行のしおり</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F1E6;
+  --paper-2:#EFE6D3;
+  --ink:#2B2620;
+  --ink-soft:#6B6355;
+  --indigo-50:#E7ECF1;
+  --indigo-100:#C3D0DD;
+  --indigo-400:#4A6A8C;
+  --indigo-600:#2C4A6E;
+  --indigo-800:#1B3049;
+  --vermilion:#B23A2E;
+  --vermilion-light:#F3DFDA;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans JP',sans-serif;
+  line-height:1.8;
+}
+.wrap{max-width:840px;margin:0 auto;padding:48px 24px 80px;}
+
+/* ---- Cover ---- */
+.cover{position:relative;padding:24px 0 32px;border-bottom:2px solid var(--indigo-600);margin-bottom:40px;}
+.eyebrow{font-size:13px;letter-spacing:.2em;color:var(--indigo-600);font-weight:500;}
+.title{
+  font-family:'Shippori Mincho',serif;
+  font-weight:700;
+  font-size:40px;
+  color:var(--indigo-800);
+  margin:8px 0 6px;
+  letter-spacing:.02em;
+}
+.subtitle{font-size:15px;color:var(--ink-soft);}
+.hanko{
+  position:absolute;top:8px;right:0;
+  width:74px;height:74px;border-radius:50%;
+  border:2.5px solid var(--vermilion);
+  color:var(--vermilion);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Shippori Mincho',serif;font-weight:700;font-size:15px;
+  transform:rotate(-8deg);
+  writing-mode:vertical-rl;
+  letter-spacing:.15em;
+}
+
+/* ---- Wishlist ticket ---- */
+.ticket{
+  background:var(--paper-2);
+  border:1.5px dashed var(--indigo-400);
+  border-radius:12px;
+  padding:20px 24px;
+  margin-bottom:44px;
+}
+.ticket h2{
+  font-family:'Shippori Mincho',serif;
+  font-size:16px;font-weight:700;
+  color:var(--indigo-600);
+  margin:0 0 12px;
+}
+.ticket ul{margin:0;padding-left:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;}
+.ticket li{font-size:14px;position:relative;padding-left:16px;}
+.ticket li::before{content:"・";position:absolute;left:0;color:var(--vermilion);}
+
+/* ---- Day sections ---- */
+.day{margin-bottom:36px;}
+.day-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+.day-badge{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--vermilion);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Shippori Mincho',serif;font-weight:700;font-size:15px;
+  flex-shrink:0;
+}
+.day-date{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:700;color:var(--indigo-800);}
+.day-weekday{font-size:13px;color:var(--ink-soft);}
+.day-card{
+  background:var(--paper-2);
+  border-radius:14px;
+  padding:28px 28px 24px;
+  border:1px solid var(--indigo-100);
+}
+.grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;}
+@media (max-width:640px){.grid{grid-template-columns:1fr;}}
+
+.timeline{border-left:2px solid var(--indigo-100);padding-left:18px;}
+.tl-item{position:relative;margin-bottom:14px;font-size:14px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{
+  content:"";position:absolute;left:-23px;top:6px;
+  width:8px;height:8px;border-radius:50%;background:var(--indigo-600);
+}
+.tl-time{font-weight:500;color:var(--indigo-600);margin-right:8px;}
+
+.side-block{margin-bottom:18px;}
+.side-block:last-child{margin-bottom:0;}
+.side-label{
+  font-size:12px;font-weight:700;color:var(--indigo-600);
+  letter-spacing:.1em;margin-bottom:6px;
+  display:flex;align-items:center;gap:6px;
+}
+.side-label::before{content:"";width:14px;height:1.5px;background:var(--vermilion);display:inline-block;}
+.side-text{font-size:14px;}
+.side-text ul{margin:0;padding-left:18px;}
+.side-text li{margin-bottom:4px;}
+
+.hotel-name{font-weight:700;color:var(--ink);}
+.hotel-addr{font-size:12.5px;color:var(--ink-soft);}
+.hotel-note{
+  display:inline-block;margin-top:6px;font-size:12px;
+  background:var(--vermilion-light);color:var(--vermilion);
+  padding:3px 10px;border-radius:20px;font-weight:500;
+}
+
+.meal-row{display:flex;gap:14px;font-size:13.5px;flex-wrap:wrap;}
+.meal-row span b{color:var(--indigo-600);font-weight:500;}
+
+.memo{
+  margin-top:20px;padding-top:16px;border-top:1px dashed var(--indigo-100);
+  font-size:13px;color:var(--ink-soft);
+}
+.memo ul{margin:6px 0 0;padding-left:18px;}
+.memo li{margin-bottom:3px;}
+
+/* perforation divider */
+.perf{display:flex;align-items:center;gap:6px;margin:0 0 30px;justify-content:center;}
+.perf span{width:5px;height:5px;border-radius:50%;background:var(--indigo-100);}
+
+/* ---- Footer note ---- */
+.footer{
+  margin-top:8px;
+  background:var(--indigo-50);
+  border-radius:14px;
+  padding:22px 26px;
+}
+.footer h3{
+  font-family:'Shippori Mincho',serif;
+  font-size:15px;color:var(--indigo-800);margin:0 0 10px;
+}
+.footer ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-soft);}
+.footer li{margin-bottom:5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="cover">
+    <div class="hanko">祝新婚</div>
+    <div class="eyebrow">TRAVEL ITINERARY — OKAYAMA</div>
+    <div class="title">岡山 新婚旅行のしおり</div>
+    <div class="subtitle">2026年9月19日(土) 〜 9月22日(火・祝) ／ 倉敷・児島</div>
+  </div>
+
+  <div class="ticket">
+    <h2>したいこと(順不同)</h2>
+    <ul>
+      <li>美観地区を観光</li>
+      <li>ミッフィ蔵のキッチン倉敷店</li>
+      <li>倉敷デニムストリート</li>
+      <li>アイビースクエア内アクティビティ体験(備前焼)</li>
+    </ul>
+  </div>
+
+  <!-- Day1 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="day-badge">Day1</div>
+      <div>
+        <div class="day-date">9/19(土)</div>
+        <div class="day-weekday">大阪 → 倉敷</div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="grid">
+        <div class="timeline">
+          <div class="tl-item"><span class="tl-time">〜8:30</span>自宅で朝ごはん</div>
+          <div class="tl-item"><span class="tl-time">9:00</span>大阪を出発</div>
+          <div class="tl-item"><span class="tl-time">12:00</span>岡山 到着予定</div>
+          <div class="tl-item"><span class="tl-time">12:00-15:00</span>ホテル周辺を軽く散策・ランチ</div>
+          <div class="tl-item"><span class="tl-time">15:00</span>ホテルへ移動・チェックイン</div>
+          <div class="tl-item"><span class="tl-time">15:00-夕方</span>ホテルでゆっくり過ごす</div>
+          <div class="tl-item"><span class="tl-time">夕方〜</span>ホテルで晩ごはん</div>
+        </div>
+        <div>
+          <div class="side-block">
+            <div class="side-label">やること・見どころ</div>
+            <div class="side-text"><ul>
+              <li>倉敷アイビースクエア周辺・美観地区を軽く散策</li>
+              <li>時間があれば夜のライトアップを楽しむ</li>
+            </ul></div>
+          </div>
+          <div class="side-block">
+            <div class="side-label">宿泊ホテル</div>
+            <div class="side-text">
+              <div class="hotel-name">倉敷アイビースクエア</div>
+              <div class="hotel-addr">岡山県倉敷市本町7-2</div>
+              <span class="hotel-note">チェックイン 15:00〜</span>
+            </div>
+          </div>
+          <div class="side-block">
+            <div class="side-label">食事</div>
+            <div class="meal-row">
+              <span><b>朝</b> 自宅</span>
+              <span><b>昼</b> 倉敷周辺</span>
+              <span><b>夜</b> ホテル</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="memo">
+        メモ・備考
+        <ul>
+          <li>大阪→岡山の移動時間を確認</li>
+          <li>ランチ候補を事前に探しておく</li>
+          <li>夜の美観地区のライトアップ時間を確認</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="perf"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <!-- Day2 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="day-badge">Day2</div>
+      <div>
+        <div class="day-date">9/20(日)</div>
+        <div class="day-weekday">美観地区を満喫</div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="grid">
+        <div class="timeline">
+          <div class="tl-item"><span class="tl-time">7:00〜</span>ホテルで朝ごはん</div>
+          <div class="tl-item"><span class="tl-time">8:00-15:00</span>美観地区をゆっくり観光</div>
+          <div class="tl-item"><span class="tl-time">15:00〜</span>カフェタイム・お土産探し</div>
+          <div class="tl-item"><span class="tl-time">夕方〜</span>ホテル内アクティビティ体験(備前焼)</div>
+          <div class="tl-item"><span class="tl-time">19:00〜</span>ホテルで晩ごはん</div>
+        </div>
+        <div>
+          <div class="side-block">
+            <div class="side-label">やること・見どころ</div>
+            <div class="side-text"><ul>
+              <li>美観地区を本格的に観光</li>
+              <li>ミッフィ蔵のキッチン倉敷店</li>
+              <li>倉敷デニムストリート</li>
+              <li>アイビースクエア内 備前焼体験</li>
+            </ul></div>
+          </div>
+          <div class="side-block">
+            <div class="side-label">宿泊ホテル</div>
+            <div class="side-text">
+              <div class="hotel-name">倉敷アイビースクエア</div>
+              <div class="hotel-addr">岡山県倉敷市本町7-2(宿泊継続)</div>
+            </div>
+          </div>
+          <div class="side-block">
+            <div class="side-label">食事</div>
+            <div class="meal-row">
+              <span><b>朝</b> ホテル</span>
+              <span><b>昼</b> 美観地区周辺</span>
+              <span><b>夜</b> ホテル</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="memo">
+        メモ・備考
+        <ul>
+          <li>美観地区で行きたいお店を事前にピックアップ</li>
+          <li>ミッフィ蔵のキッチンの営業時間を確認(9:30〜17:30)</li>
+          <li>備前焼体験の予約・時間を確認</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="perf"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <!-- Day3 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="day-badge">Day3</div>
+      <div>
+        <div class="day-date">9/21(月・祝)</div>
+        <div class="day-weekday">倉敷 → 児島</div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="grid">
+        <div class="timeline">
+          <div class="tl-item"><span class="tl-time">7:00〜</span>ホテルで朝ごはん</div>
+          <div class="tl-item"><span class="tl-time">11:00</span>倉敷アイビースクエア チェックアウト</div>
+          <div class="tl-item"><span class="tl-time">11:00-16:00</span>児島エリアへ移動・散策</div>
+          <div class="tl-item"><span class="tl-time">16:00</span>デニムフロート チェックイン</div>
+          <div class="tl-item"><span class="tl-time">16:00〜</span>ホテルでのんびり過ごす</div>
+          <div class="tl-item"><span class="tl-time">18:00〜</span>ホテルの食事で晩ごはん</div>
+        </div>
+        <div>
+          <div class="side-block">
+            <div class="side-label">やること・見どころ</div>
+            <div class="side-text"><ul>
+              <li>児島エリアを散策(海沿いの景色・お土産店など)</li>
+            </ul></div>
+          </div>
+          <div class="side-block">
+            <div class="side-label">宿泊ホテル</div>
+            <div class="side-text">
+              <div class="hotel-name">デニムフロート</div>
+              <div class="hotel-addr">岡山県倉敷市児島唐琴町1421-26</div>
+              <span class="hotel-note">チェックイン 16:00〜21:00</span>
+            </div>
+          </div>
+          <div class="side-block">
+            <div class="side-label">食事</div>
+            <div class="meal-row">
+              <span><b>朝</b> ホテル</span>
+              <span><b>昼</b> 児島エリア</span>
+              <span><b>夜</b> ホテルの食事</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="memo">
+        メモ・備考
+        <ul>
+          <li>チェックアウト:11:00 / チェックイン:16:00〜21:00</li>
+          <li>デニムフロートは事前ログイン(メールから)が必要 — 忘れずに</li>
+          <li>チェックイン時間に遅れないよう移動時間に余裕を持つ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="perf"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <!-- Day4 -->
+  <div class="day">
+    <div class="day-head">
+      <div class="day-badge">Day4</div>
+      <div>
+        <div class="day-date">9/22(火・祝)</div>
+        <div class="day-weekday">児島 → 大阪</div>
+      </div>
+    </div>
+    <div class="day-card">
+      <div class="grid">
+        <div class="timeline">
+          <div class="tl-item"><span class="tl-time">7:00〜</span>ホテルで朝ごはん(お弁当を受け取り)</div>
+          <div class="tl-item"><span class="tl-time">〜10:00</span>デニムフロート チェックアウト</div>
+          <div class="tl-item"><span class="tl-time">10:00〜</span>王子が岳山頂展望台へ(車で約5分)</div>
+          <div class="tl-item"><span class="tl-time">10:15〜</span>海を見ながらお弁当ランチ</div>
+          <div class="tl-item"><span class="tl-time">その後</span>大阪へ帰阪(途中休憩・お土産)</div>
+          <div class="tl-item"><span class="tl-time">到着予定</span>大阪 到着</div>
+        </div>
+        <div>
+          <div class="side-block">
+            <div class="side-label">やること・見どころ</div>
+            <div class="side-text"><ul>
+              <li>王子が岳山頂展望台でお弁当ランチ</li>
+              <li>帰り道でお土産探し</li>
+            </ul></div>
+          </div>
+          <div class="side-block">
+            <div class="side-label">宿泊ホテル</div>
+            <div class="side-text">
+              <div class="hotel-name">デニムフロート</div>
+              <div class="hotel-addr">岡山県倉敷市児島唐琴町1421-26</div>
+              <span class="hotel-note">チェックアウト 10:00まで</span>
+            </div>
+          </div>
+          <div class="side-block">
+            <div class="side-label">食事</div>
+            <div class="meal-row">
+              <span><b>朝</b> ホテルのお弁当</span>
+              <span><b>昼</b> 展望台で</span>
+              <span><b>夜</b> 自宅</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="memo">
+        メモ・備考
+        <ul>
+          <li>帰りの出発時間・大阪到着予定時刻を決める</li>
+          <li>休憩スポット・お土産候補を確認</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <h3>持ち物・その他メモ</h3>
+    <ul>
+      <li>すべて素泊まりプランのため、食事は当日の気分やお店の営業時間に合わせて調整する</li>
+      <li>美観地区周辺は人気店が多いので、ランチは事前にチェックしておくのがおすすめ</li>
+      <li>備前焼体験は事前予約が必要な場合があるので要確認</li>
+      <li>デニムフロートは事前ログイン(メールから)を忘れずに</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
