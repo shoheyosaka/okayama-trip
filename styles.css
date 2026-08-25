@@ -78,6 +78,22 @@ body{
   writing-mode:vertical-rl;
   letter-spacing:.15em;
 }
+body.theme-nagano .hanko{
+  writing-mode:initial;letter-spacing:normal;
+  border:none;background:none;
+}
+body.theme-nagano .hanko svg{
+  position:absolute;inset:0;margin:auto;width:64px;height:64px;
+  color:var(--vermilion);opacity:.85;
+}
+body.theme-nagano .hanko-text{
+  position:relative;top:11px;display:inline-block;transform:rotate(16deg);
+  font-size:11px;font-weight:700;letter-spacing:.03em;line-height:1.25;text-align:center;
+  color:var(--vermilion);
+  text-shadow:
+    -1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff,1.5px 1.5px 0 #fff,
+    0 -1.5px 0 #fff,0 1.5px 0 #fff,-1.5px 0 0 #fff,1.5px 0 0 #fff;
+}
 
 /* ---- Wishlist ticket ---- */
 .ticket{
