@@ -11,6 +11,15 @@
   --vermilion:#B23A2E;
   --vermilion-light:#F3DFDA;
 }
+body.theme-nagano{
+  --paper:#F6F1E6;
+  --paper-2:#EFE6D3;
+  --indigo-50:#E7F3EC;
+  --indigo-100:#C2E0CE;
+  --indigo-400:#4A9670;
+  --indigo-600:#217A50;
+  --indigo-800:#155636;
+}
 *{box-sizing:border-box;}
 body{
   margin:0;
@@ -38,6 +47,7 @@ body{
 /* ---- Cover ---- */
 .cover{position:relative;padding:24px 0 32px;border-bottom:2px solid var(--indigo-600);margin-bottom:40px;}
 .eyebrow{font-size:13px;letter-spacing:.2em;color:var(--indigo-600);font-weight:500;}
+.title-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 .title{
   font-family:'Shippori Mincho',serif;
   font-weight:700;
@@ -45,6 +55,17 @@ body{
   color:var(--indigo-800);
   letter-spacing:.02em;
 }
+.btn-trip-switch{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:4px 12px;
+  font-size:12px;font-weight:700;letter-spacing:.02em;
+  color:var(--indigo-600);
+  border:1.5px solid var(--indigo-400);border-radius:20px;
+  text-decoration:none;background:#fff;
+  transition:background .15s ease,color .15s ease;
+}
+.btn-trip-switch:hover{background:var(--indigo-600);color:#fff;}
+.btn-trip-switch::after{content:"→";}
 .subtitle{font-size:15px;color:var(--ink-soft);}
 .hanko{
   position:absolute;top:8px;right:0;
@@ -132,6 +153,8 @@ body{
 .photo-carousel::-webkit-scrollbar{display:none;}
 .photo-carousel-item{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;}
 .photo-carousel-item img{display:block;width:100%;height:100%;object-fit:cover;}
+.photo-carousel-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;color:var(--ink-soft);font-size:12.5px;}
+.photo-carousel-placeholder svg{width:28px;height:28px;opacity:.6;}
 
 /* ---- Day sections ---- */
 .day{margin-bottom:36px;}
