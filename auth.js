@@ -2,6 +2,7 @@
   // 仮実装のパスワードゲート(サーバーがないので本当のセキュリティにはなりません)
   var PASSWORD = "20260720"; // ここを好きなパスワードに変更してください
   var STORAGE_KEY = "okayama_trip_auth";
+  var HOME_HREF = /\/nagano\//.test(location.pathname) ? "../index.html" : "index.html";
 
   if (localStorage.getItem(STORAGE_KEY) === "ok") return;
 
@@ -94,9 +95,7 @@
         loading.style.display = "flex";
         setTimeout(function () {
           localStorage.setItem(STORAGE_KEY, "ok");
-          var lockStyle = document.getElementById("trip-lock-style");
-          if (lockStyle) lockStyle.remove();
-          overlay.remove();
+          window.location.href = HOME_HREF;
         }, 5000);
       } else {
         error.textContent = "パスワードが違います";
