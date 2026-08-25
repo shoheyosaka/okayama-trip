@@ -119,10 +119,20 @@ body.theme-nagano .hanko-text{
 .map-caption{margin:10px 0 0;font-size:12.5px;color:var(--ink-soft);text-align:center;}
 
 .ticket .map-legend{display:block;list-style:none;margin:14px 0 0;padding:0;text-align:left;}
-.map-legend li{display:flex;flex-direction:column;gap:2px;font-size:13px;padding:6px 0;border-top:1px dashed var(--indigo-100);}
+.map-legend li{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:10px;font-size:13px;padding:6px 0;border-top:1px dashed var(--indigo-100);}
 .map-legend li:first-child{border-top:none;}
+.map-legend li::before{content:none;}
+.map-legend-text{display:flex;flex-direction:column;gap:2px;min-width:0;}
 .map-legend-name{font-weight:700;color:var(--ink);}
 .map-legend-addr{color:var(--ink-soft);font-size:12.5px;}
+.map-legend-btn{
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:8px;
+  border:1px solid var(--indigo-100);background:#fff;color:var(--indigo-600);
+  text-decoration:none;transition:background .15s ease,border-color .15s ease;
+}
+.map-legend-btn:hover{background:var(--indigo-50);border-color:var(--indigo-400);}
+.map-legend-btn svg{width:16px;height:16px;}
 
 .overview{display:grid;grid-template-columns:120px 1fr;gap:10px 16px;margin:0;}
 .overview dt{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--indigo-600);display:flex;align-items:center;gap:6px;}
