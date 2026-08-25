@@ -47,6 +47,7 @@ body{
 /* ---- Cover ---- */
 .cover{position:relative;padding:24px 0 32px;border-bottom:2px solid var(--indigo-600);margin-bottom:40px;}
 .eyebrow{font-size:13px;letter-spacing:.2em;color:var(--indigo-600);font-weight:500;}
+.eyebrow-vella{width:24px;height:24px;border-radius:50%;object-fit:cover;vertical-align:middle;margin-left:4px;letter-spacing:normal;}
 .title-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 .title{
   font-family:'Shippori Mincho',serif;

@@ -18,8 +18,12 @@
       "<style>" +
       "#vella-modal-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;" +
       "background:rgba(43,38,32,.55);padding:24px;font-family:'Noto Sans JP',sans-serif;}" +
-      "#vella-modal-card{width:100%;max-width:300px;background:#F6F1E6;border-radius:16px;padding:22px 20px 20px;" +
+      "#vella-modal-card{position:relative;width:100%;max-width:300px;background:#F6F1E6;border-radius:16px;padding:22px 20px 20px;" +
       "text-align:center;box-shadow:0 20px 45px -15px rgba(0,0,0,.4);box-sizing:border-box;}" +
+      "#vella-modal-close{position:absolute;top:10px;right:10px;width:26px;height:26px;border:none;border-radius:50%;" +
+      "background:transparent;color:#6B6355;font-size:16px;line-height:1;cursor:pointer;" +
+      "display:flex;align-items:center;justify-content:center;transition:background .15s ease;}" +
+      "#vella-modal-close:hover{background:#E7ECF1;}" +
       "#vella-modal-card img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;margin:0 0 14px;display:block;" +
       "border:1px solid #C3D0DD;}" +
       "#vella-modal-card p{font-size:13.5px;color:#2B2620;margin:0 0 18px;line-height:1.6;}" +
@@ -31,6 +35,7 @@
       "#vella-modal-buttons button:disabled{opacity:.5;cursor:default;}" +
       "</style>" +
       '<div id="vella-modal-card">' +
+      '<button type="button" id="vella-modal-close" aria-label="閉じる">✕</button>' +
       '<img id="vella-modal-img" src="images/vella-asking.png" alt="ベラ">' +
       "<p>仲間になりたそうにこちらを見ている。</p>" +
       '<div id="vella-modal-buttons">' +
@@ -42,8 +47,13 @@
     document.body.appendChild(overlay);
 
     var img = overlay.querySelector("#vella-modal-img");
+    var closeBtn = overlay.querySelector("#vella-modal-close");
     var takeBtn = overlay.querySelector(".vella-btn-take");
     var leaveBtn = overlay.querySelector(".vella-btn-leave");
+
+    closeBtn.addEventListener("click", function () {
+      overlay.remove();
+    });
 
     takeBtn.addEventListener("click", function () {
       takeBtn.disabled = true;
