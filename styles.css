@@ -162,6 +162,11 @@ body{
   width:8px;height:8px;border-radius:50%;background:var(--indigo-600);
 }
 .tl-time{font-weight:500;color:var(--indigo-600);margin-right:8px;}
+.tl-badge{
+  display:inline-block;margin-left:8px;font-size:11px;
+  background:var(--vermilion-light);color:var(--vermilion);
+  padding:2px 8px;border-radius:20px;font-weight:500;
+}
 .tl-note{margin-top:2px;font-size:12.5px;color:var(--ink-soft);}
 
 .tl-transit{
